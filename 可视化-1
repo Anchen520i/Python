@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+large = 22; med = 16; small = 12
+params = {'axes.titlesize': large,
+        'legend.fontsize': med,
+        'figure.figsize':(16, 10),
+        'axes.labelsize': med,
+        'axes.titlesize': med,
+        'xtick.labelsize': med,
+        'ytick.labelsize': med,
+        'figure.titlesize': large}
+plt.rcParams.update(params)
+plt.style.use('seaborn-whitegrid')
+sns.set_style("white")
+
+df = pd.read_csv("https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv")
+with plt.xkcd(scale=4, length=120, randomness=2):
+
+    plt.figure(figsize=(20,10), dpi=1000)
+    sns.kdeplot(df.loc[df['cyl'] == 4, "cty"], shade=True, color="g", label="Cyl=4", alpha=.7)
+    sns.kdeplot(df.loc[df['cyl'] == 5, "cty"], shade=True, color="g", label="Cyl=4", alpha=.7)
+    sns.kdeplot(df.loc[df['cyl'] == 6, "cty"], shade=True, color="g", label="Cyl=4", alpha=.7)
+    sns.kdeplot(df.loc[df['cyl'] == 7, "cty"], shade=True, color="g", label="Cyl=4", alpha=.7)
+    sns.kdeplot(df.loc[df['cyl'] == 8, "cty"], shade=True, color="g", label="Cyl=4", alpha=.7)
+    plt.title('Density Plot of City Mileage by _Cylinders', fontsize=22)
+    plt.legend()
+    plt.savefig('安晨&小莹.png', format='png', transparent=True)
